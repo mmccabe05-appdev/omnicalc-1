@@ -21,4 +21,28 @@ class ApplicationController < ActionController::Base
 
     render({ :template => "calculation_templates/random_results.html.erb" })
   end
+
+  def blank_square_root_form
+    render({ :template => "calculation_templates/square_root_form.html.erb" })
+  end
+
+  def calculate_square_root
+    @user_input = params.fetch("user_input").to_f
+    @square_root = @user_input ** 0.5
+
+    render({ :template => "calculation_templates/square_root_results.html.erb" })
+  end
+
+  def blank_payments_form
+    render({ :template => "calculation_templates/payment_form.html.erb" })
+  end
+
+  def calculate_payment
+    @user_apr = params.fetch("user_apr").to_f
+    @user_years = params.fetch("user_years").to_f
+    @user_principal = params.fetch("user_principal").to_f
+    
+
+    render({ :template => "calculation_templates/payment_results.html.erb" })
+  end
 end
